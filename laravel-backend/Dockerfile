@@ -1,5 +1,5 @@
-# Sử dụng PHP 8.2 với Apache
-FROM php:8.2-apache
+# Sử dụng PHP 8.2 FPM
+FROM php:8.2-fpm
 
 # Cài đặt system dependencies
 RUN apt-get update && apt-get install -y \
@@ -43,14 +43,14 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Tạo storage link (có thể fail nên ignore error)
 RUN php artisan storage:link || true
 
-# Disable conflicting MPM modules and enable required modules
-RUN a2dismod mpm_event mpm_worker && a2enmod mpm_prefork rewrite
+# Install nginx
+RUN apt-get update && apt-get install -y nginx
 
-# Copy Apache configuration
-COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+# Copy nginx configuration
+COPY docker/nginx.conf /etc/nginx/sites-available/default
 
 # Expose port 80
 EXPOSE 80
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Start nginx and php-fpm
+CMD service nginx start && php-fpm
