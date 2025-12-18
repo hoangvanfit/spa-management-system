@@ -43,8 +43,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Tạo storage link (có thể fail nên ignore error)
 RUN php artisan storage:link || true
 
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
+# Disable conflicting MPM modules and enable required modules
+RUN a2dismod mpm_event mpm_worker && a2enmod mpm_prefork rewrite
 
 # Copy Apache configuration
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
