@@ -1,0 +1,259 @@
+.zaloProfileContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+
+    .header {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .logoSection {
+            .zaloLogo {
+                font-size: 28px;
+                font-weight: 700;
+                color: #0068ff;
+                letter-spacing: -0.5px;
+            }
+        }
+
+        .languageSelector {
+            .languageSelect {
+                padding: 8px 12px;
+                border: 1px solid #d9d9d9;
+                border-radius: 4px;
+                background: white;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .content {
+        width: 100%;
+        max-width: 800px;
+        flex: 1;
+
+        .profileCard {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+
+            .profileHeader {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+                margin-bottom: 20px;
+
+                .profileLeft {
+                    .avatarContainer {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+
+                        .avatar {
+                            width: 80px;
+                            height: 80px;
+                            border-radius: 50%;
+                            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px;
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+                            .avatarImage {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        .shortName {
+                            font-size: 14px;
+                            color: #666;
+                            text-transform: lowercase;
+                        }
+                    }
+                }
+
+                .profileRight {
+                    flex: 1;
+
+                    .nameSection {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        margin-bottom: 8px;
+
+                        .spaName {
+                            margin: 0;
+                            font-size: 28px;
+                            font-weight: 700;
+                            color: #1a1a1a;
+                        }
+
+                        .verifiedIcon {
+                            color: #ffd700;
+                            font-size: 24px;
+                        }
+                    }
+
+                    .category {
+                        display: block;
+                        color: #666;
+                        margin-bottom: 16px;
+                        font-size: 14px;
+                    }
+
+                    .messageButton {
+                        background: #0068ff;
+                        border-color: #0068ff;
+                        height: 40px;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
+                        &:hover {
+                            background: #0052cc;
+                            border-color: #0052cc;
+                        }
+                    }
+                }
+
+                .qrCodeSection {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+
+                    .qrCode {
+                        border: 2px solid #f0f0f0;
+                        padding: 10px;
+                        background: white;
+                        border-radius: 8px;
+                    }
+
+                    .qrCodeText {
+                        font-size: 12px;
+                        color: #666;
+                        text-align: center;
+                        max-width: 150px;
+                        line-height: 1.4;
+                    }
+                }
+            }
+
+            .sectionTitle {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                color: #1a1a1a;
+            }
+
+            .infoList {
+                width: 100%;
+
+                .infoItem {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 12px;
+                    padding: 8px 0;
+
+                    .infoIcon {
+                        font-size: 20px;
+                        color: #0068ff;
+                        margin-top: 2px;
+                        flex-shrink: 0;
+                    }
+
+                    .infoText {
+                        font-size: 15px;
+                        color: #333;
+                        line-height: 1.6;
+                    }
+
+                    .websiteLink {
+                        font-size: 15px;
+                        color: #0068ff;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            .description {
+                margin-top: 20px;
+
+                .descriptionText {
+                    font-size: 15px;
+                    color: #666;
+                    line-height: 1.8;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .footer {
+        margin-top: 40px;
+        text-align: center;
+
+        .copyright {
+            font-size: 12px;
+            color: #999;
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .zaloProfileContainer {
+        padding: 15px;
+
+        .content {
+            .profileCard {
+                padding: 20px;
+
+                .profileHeader {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+
+                    .profileRight {
+                        width: 100%;
+                        text-align: center;
+
+                        .nameSection {
+                            justify-content: center;
+                        }
+
+                        .messageButton {
+                            width: 100%;
+                            justify-content: center;
+                        }
+                    }
+
+                    .qrCodeSection {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
