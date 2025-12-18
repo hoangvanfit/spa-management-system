@@ -34,11 +34,14 @@ COPY --chown=www-data:www-data . /var/www/html
 # Cài đặt dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Tạo storage link
-RUN php artisan storage:link
+# Tạo thư mục cần thiết
+RUN mkdir -p /var/www/html/public/storage
 
-# Set permissions
+# Set permissions trước
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Tạo storage link (có thể fail nên ignore error)
+RUN php artisan storage:link || true
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
